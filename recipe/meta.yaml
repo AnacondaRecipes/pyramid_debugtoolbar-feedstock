@@ -11,6 +11,7 @@ source:
 
 build:
   skip: true  # [py<38]
+  skip: true  # [linux and (aarch64 or s390x)]
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
