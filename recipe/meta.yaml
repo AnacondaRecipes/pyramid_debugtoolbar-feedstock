@@ -13,7 +13,7 @@ build:
   skip: true  # [py<38]
   skip: true  # [linux and (aarch64 or s390x)]
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps
 
 requirements:
   host:
@@ -38,6 +38,7 @@ test:
 
 about:
   home: https://trypyramid.com
+  description: pyramid_debugtoolbar provides a debug toolbar useful while you're developing your Pyramid application.
   license: LicenseRef-Pylons
   license_family: BSD
   license_file: LICENSE.txt
