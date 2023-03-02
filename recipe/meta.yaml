@@ -1,0 +1,50 @@
+{% set name = "pyramid_debugtoolbar" %}
+{% set version = "4.10" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: cfc8cfaf342609577fbb93e899fbb2290b31e3418c4b68f0dae37cb3b60fe88b
+
+build:
+  skip: true  # [py<38]
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - pip
+    - python
+    - setuptools
+    - wheel
+  run:
+    - python
+    - pyramid >=1.4
+    - pyramid_mako >=0.3.1
+    - repoze.lru
+    - pygments
+
+test:
+  requires:
+    - pip
+  imports:
+    - pyramid_debugtoolbar
+  commands:
+    - pip check
+
+about:
+  home: https://trypyramid.com
+  license: LicenseRef-Pylons
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: The Pyramid Web Framework, a Pylons project
+  doc_url: https://docs.pylonsproject.org/projects/pyramid_mako/en/latest/
+  dev_url: https://github.com/Pylons/pyramid_mako
+
+extra:
+  recipe-maintainers:
+    - ChrisBarker-NOAA
+    - JamesMakela-NOAA
